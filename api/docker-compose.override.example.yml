@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  twitter-api:
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    environment:
+      PORT: 4000
+      BEARER_TOKEN: example_token
+      STREAM_URL: https://api.Tweetter.com/2/tweets/search/stream
+      RULES_URL: https://api.Tweetter.com/2/tweets/search/stream/rules
+      ACCOUNTS: |
+        [
+                  "@Cybersole",
+                  "@destroyerbots"
+        ]
+
+      SERVER_URL: localhost:4000
+    ports:
+      - "4000:4000"
+    volumes:
+      - "./src:/server/src"
+    entrypoint: yarn run start:dev
+
+  redis:
+    volumes:
+      - .data/redis:/data

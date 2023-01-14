@@ -1,0 +1,68 @@
+{
+  "name": "twitter-api",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "babel --extensions '.ts,.js' ./ts-build -d ./js-dist",
+    "start": "node src/index",
+    "start:dev": "nodemon -e ts,js -w ./src ./index.js & yarn run watch",
+    "watch": "babel --config-file ./.babelrc --extensions '.ts' ./src -d ./src --watch",
+    "lint": "tsc --noEmit && eslint . --ext .js,.ts",
+    "dev": "src/node_modules/.bin/nodemon src/index"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint"
+    }
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
+  "eslintIgnore": [
+    "tests/*",
+    "scripts/*",
+    "express/*"
+  ],
+  "repository": "https://github.com/Oleg-Sachuk/Twitter-Monitor.git",
+  "author": "oleg_sachuk <sachuk.o.a@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "needle": "^3.2.0",
+    "redis": "^4.5.1",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-ui-express": "^4.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.10",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/express": "^4.17.13",
+    "@types/needle": "^3.2.0",
+    "@types/node": "^18.6.4",
+    "@types/redis": "^4.0.11",
+    "@types/swagger-ui-express": "^4.1.3",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "babel-plugin-inline-json-import": "^0.3.2",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3",
+    "typescript": "^4.7.4"
+  }
+}

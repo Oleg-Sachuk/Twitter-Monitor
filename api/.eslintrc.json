@@ -1,0 +1,26 @@
+{
+  "env": {
+    "es6": true,
+    "es2017": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/eslint-recommended", "plugin:prettier/recommended"],
+  "globals": {
+    "Parse": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "tsconfigRootDir": "."
+  },
+  "ignorePatterns": ["index.js", "*.js"],
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      2,
+      {
+        "args": "none"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+version: '3'
+
+networks:
+  backend:
+
+services:
+
+  twitter-api:
+    networks:
+      - backend
+
+  redis:
+    image: redis:6.0-alpine
+    networks:
+      - backend
+    volumes:
+      - redis:/data
+
+volumes:
+  redis:
+    driver: local
+    driver_opts:
+      device: $PWD/.data/redis
+      o: bind
+      type: none
