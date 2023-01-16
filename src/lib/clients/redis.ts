@@ -1,4 +1,4 @@
-import {createClient} from 'redis';
+import {createClient, RedisClientType} from 'redis';
 import {getTweetsResponse} from '../types/twitter';
 
 const REDIS_OPTS = {
@@ -8,7 +8,7 @@ const REDIS_OPTS = {
 };
 
 export class RedisModule {
-  public redisClient;
+  private redisClient: RedisClientType;
 
   constructor() {
     this.redisClient = createClient({
